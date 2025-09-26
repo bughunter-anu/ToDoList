@@ -1,161 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
-    <style>
-     body {
-     font-family: Arial, sans-serif;
-     background: #f4f4f4;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     min-height: 100vh;
-    }
-
-    .container {
-     background: #fff;
-     padding: 20px ;
-     width: 400px;
-     border-radius: 10px;
-     box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-     box-sizing: border-box;
-    }
-
-    h2 {
-     text-align: center;
-     margin-bottom: 20px;
-     }
-
-
-
-    input, textarea {
-        width: 100%;
-        padding: 8px;
-        margin: 6px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-        resize: none;
-    }
-
-     .buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-      padding: 0 5px;
-    }
-     
-    .buttons button {
-        flex: 1;
-        margin: 0 5px;
-    }
-
-    button {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-
-    button.add {
-      background: #28a745;
-      color: white;
-    }
-
-
-    button.delete-all {
-      background: #dc3545;
-      color: white;
-    }
-
-
-    .task {
-      background: #f9f9f9;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 10px;
-      margin-top: 10px;
-    }
-
-
-    .task h4 {
-      margin: 0;
-    }
-
-
-    .task p {
-      margin: 5px 0;
-      color: #555;
-    }
-
-
-    .task-buttons {
-      margin-top: 8px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-
-
-    .task-buttons button {
-      padding: 5px 10px;
-    }
-
-
-    .task-buttons .edit {
-      background: #ffc107;
-      color: white;
-    }
-
-
-    .task-buttons .delete {
-      background: #dc3545;
-      color: white;
-    }
-    
-    @media (max-width: 350px) {
-       .buttons {
-        flex-direction: column;
-    }
-       .buttons button {
-        width: 100%;
-        margin: 5px 0;
-  }
-}
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
 </head>
 <body>
-    <div class="container">
-        <h2>To Do List</h2>
-        <input type="text" id="title" placeholder="Title">
-        <textarea id="description" rows="3" placeholder="Description"></textarea>
-        <div class="buttons">
-            <button class="add" onclick="addTask()">Add</button>
-            <button class="delete-all" onclick="deleteAll()">Delete All</button>
-        </div>
-        <div id = "taskList"></div>
+  <div class="container">
+    <h2>To Do List</h2>
+    <input type="text" id="title" placeholder="Title">
+    <textarea id="description" rows="3" placeholder="Description"></textarea>
+    <div class="buttons">
+      <button class="add" onclick="addTask()">Add</button>
+      <button class="delete-all" onclick="deleteAll()">Delete All</button>
     </div>
+    <div id="taskList"></div>
+  </div>
 
-    <script>
-        let taskList = document.getElementById("taskList");
+  <script>
+    // Apply styles with JS
+    document.body.style.fontFamily = "Arial, sans-serif";
+    document.body.style.background = "#f4f4f4";
+    document.body.style.display = "flex";
+    document.body.style.justifyContent = "center";
+    document.body.style.alignItems = "center";
+    document.body.style.minHeight = "100vh";
+    document.body.style.margin = "0";
 
-        function addTask() {
-           let title = document.getElementById("title").value;
-           let description = document.getElementById("description").value;
+    let container = document.querySelector(".container");
+    container.style.background = "#fff";
+    container.style.padding = "20px";
+    container.style.width = "400px";
+    container.style.borderRadius = "10px";
+    container.style.boxShadow = "0px 4px 8px rgba(0,0,0,0.1)";
+    container.style.boxSizing = "border-box";
 
-        if (title === "" || description === "") {
-           alert("Please fill both Title and Description");
-           return;
-       }
+    let h2 = document.querySelector("h2");
+    h2.style.textAlign = "center";
+    h2.style.marginBottom = "20px";
 
-        let taskDiv = document.createElement("div");
-        taskDiv.classList.add("task");
+    let inputs = document.querySelectorAll("input, textarea");
+    inputs.forEach(el => {
+      el.style.width = "100%";
+      el.style.padding = "8px";
+      el.style.margin = "6px 0";
+      el.style.border = "1px solid #ccc";
+      el.style.borderRadius = "5px";
+      el.style.boxSizing = "border-box";
+      el.style.resize = "none";
+    });
 
-       taskDiv.innerHTML = `
+    let buttonsDiv = document.querySelector(".buttons");
+    buttonsDiv.style.display = "flex";
+    buttonsDiv.style.justifyContent = "space-between";
+    buttonsDiv.style.marginTop = "10px";
+    buttonsDiv.style.padding = "0 5px";
+
+    let buttons = document.querySelectorAll("button");
+    buttons.forEach(btn => {
+      btn.style.flex = "1";
+      btn.style.margin = "0 5px";
+      btn.style.padding = "8px 12px";
+      btn.style.border = "none";
+      btn.style.borderRadius = "5px";
+      btn.style.cursor = "pointer";
+    });
+
+    document.querySelector(".add").style.background = "#28a745";
+    document.querySelector(".add").style.color = "white";
+
+    document.querySelector(".delete-all").style.background = "#dc3545";
+    document.querySelector(".delete-all").style.color = "white";
+
+    // Functions
+    let taskList = document.getElementById("taskList");
+
+    function addTask() {
+      let title = document.getElementById("title").value;
+      let description = document.getElementById("description").value;
+
+      if (title === "" || description === "") {
+        alert("Please fill both Title and Description");
+        return;
+      }
+
+      let taskDiv = document.createElement("div");
+      taskDiv.classList.add("task");
+      taskDiv.innerHTML = `
         <h4>${title}</h4>
         <p>${description}</p>
         <div class="task-buttons">
@@ -163,6 +94,40 @@
           <button class="delete" onclick="deleteTask(this)">Delete</button>
         </div>
       `;
+
+      // Task styling
+      taskDiv.style.background = "#f9f9f9";
+      taskDiv.style.border = "1px solid #ddd";
+      taskDiv.style.borderRadius = "5px";
+      taskDiv.style.padding = "10px";
+      taskDiv.style.marginTop = "10px";
+
+      let h4 = taskDiv.querySelector("h4");
+      h4.style.margin = "0";
+
+      let p = taskDiv.querySelector("p");
+      p.style.margin = "5px 0";
+      p.style.color = "#555";
+
+      let taskBtns = taskDiv.querySelector(".task-buttons");
+      taskBtns.style.marginTop = "8px";
+      taskBtns.style.display = "flex";
+      taskBtns.style.justifyContent = "flex-end";
+      taskBtns.style.gap = "10px";
+
+      let btns = taskDiv.querySelectorAll("button");
+      btns.forEach(b => {
+        b.style.padding = "5px 10px";
+        b.style.borderRadius = "5px";
+        b.style.border = "none";
+        b.style.cursor = "pointer";
+      });
+
+      taskDiv.querySelector(".edit").style.background = "#ffc107";
+      taskDiv.querySelector(".edit").style.color = "white";
+
+      taskDiv.querySelector(".delete").style.background = "#dc3545";
+      taskDiv.querySelector(".delete").style.color = "white";
 
       taskList.appendChild(taskDiv);
 
@@ -174,11 +139,11 @@
       btn.parentElement.parentElement.remove();
     }
 
-     function deleteAll() {
+    function deleteAll() {
       taskList.innerHTML = "";
     }
 
-     function editTask(btn) {
+    function editTask(btn) {
       let taskDiv = btn.parentElement.parentElement;
       let title = taskDiv.querySelector("h4").innerText;
       let description = taskDiv.querySelector("p").innerText;
@@ -188,6 +153,6 @@
 
       taskDiv.remove();
     }
-    </script>
+  </script>
 </body>
 </html>
